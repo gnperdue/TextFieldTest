@@ -7,15 +7,75 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    var body: some View {
-        Text("Hello, world!")
-            .padding()
-    }
+struct Point {
+  var x: Double
+  var y: Double
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+struct ContentView: View {
+  @State private var point = Point(x: 0.0, y: 0.0)
+  @State private var modalIsPresented = false
+
+  var body: some View {
+    
+    VStack {
+      HStack {
+        Text("X = \(point.x)")
+        Text("Y = \(point.y)")
+      }
+      
+      Button(action: {
+        print("x = \(point.x), y = \(point.y)")
+      }, label: {
+        Label("Print x, y to console", image: "hand.point.up.left")
+      })
+      .padding()
+
+      
+      Button(action: {
+        modalIsPresented = true
+      }, label: {
+        Label("Invoke modal", image: "hand.point.up.left")
+      })
     }
+    .sheet(isPresented: $modalIsPresented) {
+      SheetView(point: $point)
+    }
+
+  }
+}
+
+struct SheetView: View {
+  @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+  @Binding var point: Point
+  
+  var body: some View {
+    
+    VStack {
+
+      Form {
+        Section(header: Text("X").bold()) {
+          TextField("Set X", value: $point.x, formatter: NumberFormatter())
+        }
+        Section(header: Text("Y").bold()) {
+          TextField("Set Y", value: $point.y, formatter: NumberFormatter())
+        }
+      }
+
+      Button(action: {
+        self.mode.wrappedValue.dismiss()
+      }, label: {
+        Label("Push me", image: "hand.point.up.left")
+      })
+      .padding()
+    }
+    
+  }
+}
+
+
+struct ContentView_Previews: PreviewProvider {
+  static var previews: some View {
+    ContentView()
+  }
 }
