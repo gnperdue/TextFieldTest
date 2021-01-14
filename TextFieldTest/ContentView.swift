@@ -12,18 +12,9 @@ struct Point {
   var y: Double
 }
 
-class ObservablePoint: ObservableObject {
-  @Published var x: Double
-  @Published var y: Double
-  init(x: Double, y: Double) {
-    self.x = x
-    self.y = y
-  }
-}
 
 struct ContentView: View {
   @State private var point = Point(x: 0.0, y: 0.0)
-  @StateObject var obsPoint = ObservablePoint(x: 0.0, y: 0.0)
   @State private var modalIsPresented = false
 
   var body: some View {
@@ -34,14 +25,8 @@ struct ContentView: View {
         Text("Y = \(point.y)")
       }
 
-      HStack {
-        Text("Obs X = \(obsPoint.x)")
-        Text("Obs Y = \(obsPoint.y)")
-      }
-      
       Button(action: {
         print("x = \(point.x), y = \(point.y)")
-        print("obs x = \(obsPoint.x), obs y = \(obsPoint.y)")
       }, label: {
         Label("Print x, y to console", systemImage: "hand.point.up.left")
       })
@@ -55,41 +40,12 @@ struct ContentView: View {
       })
     }
     .sheet(isPresented: $modalIsPresented) {
-      ObsSheetView(point: obsPoint)
-//      SheetView(point: $point)
+      SheetView(point: $point)
     }
 
   }
 }
 
-struct ObsSheetView: View {
-  @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-  @ObservedObject var point: ObservablePoint
-  
-  var body: some View {
-    
-    VStack {
-      Text("ObservablePoint")
-      
-      Form {
-        Section(header: Text("X").bold()) {
-          TextField("Set X", value: $point.x, formatter: NumberFormatter())
-        }
-        Section(header: Text("Y").bold()) {
-          TextField("Set Y", value: $point.y, formatter: NumberFormatter())
-        }
-      }
-
-      Button(action: {
-        self.mode.wrappedValue.dismiss()
-      }, label: {
-        Label("Enter data", systemImage: "hand.point.up.left")
-      })
-      .padding()
-    }
-    
-  }
-}
 
 struct SheetView: View {
   @Environment(\.presentationMode) var mode: Binding<PresentationMode>
