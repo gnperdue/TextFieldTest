@@ -65,7 +65,7 @@ struct SheetView: View {
       Button(action: {
         self.mode.wrappedValue.dismiss()
       }, label: {
-        Label("Push me", image: "hand.point.up.left")
+        Label("Enter data", systemImage: "hand.point.up.left")
       })
       .padding()
     }
