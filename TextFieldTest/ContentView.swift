@@ -27,7 +27,7 @@ struct ContentView: View {
       Button(action: {
         print("x = \(point.x), y = \(point.y)")
       }, label: {
-        Label("Print x, y to console", image: "hand.point.up.left")
+        Label("Print x, y to console", systemImage: "hand.point.up.left")
       })
       .padding()
 
@@ -35,7 +35,7 @@ struct ContentView: View {
       Button(action: {
         modalIsPresented = true
       }, label: {
-        Label("Invoke modal", image: "hand.point.up.left")
+        Label("Invoke modal", systemImage: "hand.point.up.left")
       })
     }
     .sheet(isPresented: $modalIsPresented) {
