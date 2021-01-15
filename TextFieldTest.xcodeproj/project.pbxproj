@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0308174F25B07C39009A8656 /* IntegerTextFieldValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308174E25B07C39009A8656 /* IntegerTextFieldValue.swift */; };
-		0320FC6B25B116EE00BEB15D /* IntegerTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0320FC6A25B116EE00BEB15D /* IntegerTextFieldView.swift */; };
+		0320FC6B25B116EE00BEB15D /* NumberTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0320FC6A25B116EE00BEB15D /* NumberTextFieldView.swift */; };
 		035B21DF25AFC39700F7E636 /* TextFieldTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B21DE25AFC39700F7E636 /* TextFieldTestApp.swift */; };
 		035B21E125AFC39700F7E636 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B21E025AFC39700F7E636 /* ContentView.swift */; };
 		035B21E325AFC39700F7E636 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 035B21E225AFC39700F7E636 /* Assets.xcassets */; };
@@ -17,7 +17,7 @@
 
 /* Begin PBXFileReference section */
 		0308174E25B07C39009A8656 /* IntegerTextFieldValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegerTextFieldValue.swift; sourceTree = "<group>"; };
-		0320FC6A25B116EE00BEB15D /* IntegerTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegerTextFieldView.swift; sourceTree = "<group>"; };
+		0320FC6A25B116EE00BEB15D /* NumberTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTextFieldView.swift; sourceTree = "<group>"; };
 		035B21DB25AFC39700F7E636 /* TextFieldTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextFieldTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		035B21DE25AFC39700F7E636 /* TextFieldTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTestApp.swift; sourceTree = "<group>"; };
 		035B21E025AFC39700F7E636 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -62,7 +62,7 @@
 				035B21E225AFC39700F7E636 /* Assets.xcassets */,
 				035B21E725AFC39700F7E636 /* Info.plist */,
 				035B21E425AFC39700F7E636 /* Preview Content */,
-				0320FC6A25B116EE00BEB15D /* IntegerTextFieldView.swift */,
+				0320FC6A25B116EE00BEB15D /* NumberTextFieldView.swift */,
 			);
 			path = TextFieldTest;
 			sourceTree = "<group>";
@@ -147,7 +147,7 @@
 				0308174F25B07C39009A8656 /* IntegerTextFieldValue.swift in Sources */,
 				035B21E125AFC39700F7E636 /* ContentView.swift in Sources */,
 				035B21DF25AFC39700F7E636 /* TextFieldTestApp.swift in Sources */,
-				0320FC6B25B116EE00BEB15D /* IntegerTextFieldView.swift in Sources */,
+				0320FC6B25B116EE00BEB15D /* NumberTextFieldView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

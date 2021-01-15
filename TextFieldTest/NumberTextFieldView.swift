@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct IntegerTextFieldView: View {
+struct NumberTextFieldView: View {
   @Environment(\.presentationMode) var mode: Binding<PresentationMode>
   @Binding var cycle: Cycle
   @State private var wValue = DoubleTextFieldValue()
@@ -18,8 +18,8 @@ struct IntegerTextFieldView: View {
   }
 }
 
-struct IntegerTextFieldView_Previews: PreviewProvider {
+struct NumberTextFieldView_Previews: PreviewProvider {
   static var previews: some View {
-    IntegerTextFieldView(cycle: .constant(.init(w: 0.0, r: 0)))
+    NumberTextFieldView(cycle: .constant(.init(w: 0.0, r: 0)))
   }
 }
