@@ -7,6 +7,8 @@
 
 import Foundation
 
+// Note: `IntegerTextFieldValue` originally written by Scott Grosch. See
+//  https://gist.github.com/grosch/b41f9a0a2be00f47c62f99e82936860e
 public class IntegerTextFieldValue: ObservableObject {
   @Published var value = "" {
     didSet {
@@ -39,7 +41,10 @@ public class DoubleTextFieldValue: ObservableObject {
   
   @Published var value = "" {
     didSet {
-      value = trimStr(str: value)
+      let trimmedValue = trimStr(str: value)
+      if trimmedValue != value {
+        value = trimmedValue
+      }
     }
   }
 }

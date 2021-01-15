@@ -40,7 +40,8 @@ struct ContentView: View {
       })
     }
     .sheet(isPresented: $modalIsPresented) {
-      SheetView(cycle: $cycle)
+//      SheetView(cycle: $cycle)
+      NumberTextFieldView(cycle: $cycle)
     }
 
   }

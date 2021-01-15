@@ -10,11 +10,36 @@ import SwiftUI
 struct NumberTextFieldView: View {
   @Environment(\.presentationMode) var mode: Binding<PresentationMode>
   @Binding var cycle: Cycle
-  @State private var wValue = DoubleTextFieldValue()
-  @State private var rValue = IntegerTextFieldValue()
+  @StateObject private var wValue = DoubleTextFieldValue()
+  @StateObject private var rValue = IntegerTextFieldValue()
 
   var body: some View {
-    Text("mellow")
+    VStack {
+
+      Form {
+        Section(header: Text("W").bold()) {
+          TextField("Set W", text: $wValue.value)
+            .keyboardType(.decimalPad) // .numberPad? - want a decimal though
+            .onChange(of: wValue.value) { cycle.w = Double($0) ?? 0.0 }
+        }
+        Section(header: Text("R").bold()) {
+          TextField("Set R", text: $rValue.value)
+            .keyboardType(.numberPad) // .numberPad? - for ints, I guess
+            .onChange(of: rValue.value) { cycle.r = Int($0) ?? 0 }
+        }
+      }
+
+      Button(action: {
+        self.mode.wrappedValue.dismiss()
+      }, label: {
+        Label("Enter data", systemImage: "hand.point.up.left")
+      })
+      .padding()
+    }
+    .onAppear {
+      wValue.value = "\($cycle.wrappedValue.w)"
+      rValue.value = "\($cycle.wrappedValue.r)"
+    }
   }
 }
 
