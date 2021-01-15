@@ -7,28 +7,28 @@
 
 import SwiftUI
 
-struct Point {
-  var x: Double
-  var y: Double
+struct Cycle {
+  var w: Double
+  var r: Int
 }
 
 
 struct ContentView: View {
-  @State private var point = Point(x: 0.0, y: 0.0)
+  @State private var cycle = Cycle(w: 0.0, r: 0)
   @State private var modalIsPresented = false
 
   var body: some View {
     
     VStack {
       HStack {
-        Text("X = \(point.x)")
-        Text("Y = \(point.y)")
+        Text("W = \(cycle.w)")
+        Text("R = \(cycle.r)")
       }
 
       Button(action: {
-        print("x = \(point.x), y = \(point.y)")
+        print("w = \(cycle.w), r = \(cycle.r)")
       }, label: {
-        Label("Print x, y to console", systemImage: "hand.point.up.left")
+        Label("Print w, r to console", systemImage: "hand.point.up.left")
       })
       .padding()
 
@@ -40,7 +40,7 @@ struct ContentView: View {
       })
     }
     .sheet(isPresented: $modalIsPresented) {
-      SheetView(point: $point)
+      SheetView(cycle: $cycle)
     }
 
   }
@@ -51,14 +51,14 @@ struct ContentView: View {
  */
 struct SheetView: View {
   @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-  @Binding var point: Point
-  @State private var xValue: String
-  @State private var yValue: String
+  @Binding var cycle: Cycle
+  @State private var wValue: String
+  @State private var rValue: String
 
-  init(point: Binding<Point>) {
-    _point = point
-    _xValue = State(initialValue: "\(point.wrappedValue.x)")
-    _yValue = State(initialValue: "\(point.wrappedValue.y)")
+  init(cycle: Binding<Cycle>) {
+    _cycle = cycle
+    _wValue = State(initialValue: "\(cycle.wrappedValue.w)")
+    _rValue = State(initialValue: "\(cycle.wrappedValue.r)")
     // actually prefer, but here, whatevs - neat to see how to pass above
 //    _xValue = State(initialValue: "")
 //    _yValue = State(initialValue: "")
@@ -69,23 +69,23 @@ struct SheetView: View {
     VStack {
 
       Form {
-        Section(header: Text("X").bold()) {
-          TextField("Set X", text: $xValue)
+        Section(header: Text("W").bold()) {
+          TextField("Set W", text: $wValue)
             .keyboardType(.decimalPad) // .numberPad? - want a decimal though
         }
-        Section(header: Text("Y").bold()) {
-          TextField("Set Y", text: $yValue)
-            .keyboardType(.decimalPad) // .numberPad? - for ints, I guess
+        Section(header: Text("R").bold()) {
+          TextField("Set R", text: $rValue)
+            .keyboardType(.numberPad) // .numberPad? - for ints, I guess
         }
       }
 
       Button(action: {
-        guard let x = Double(xValue), let y = Double(yValue) else {
+        guard let w = Double(wValue), let r = Int(rValue) else {
           // post a pop-up, etc.
           return
         }
-        point.x = x
-        point.y = y
+        cycle.w = w
+        cycle.r = r
         self.mode.wrappedValue.dismiss()
       }, label: {
         Label("Enter data", systemImage: "hand.point.up.left")
